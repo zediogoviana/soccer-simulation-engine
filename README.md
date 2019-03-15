@@ -44,13 +44,13 @@ The `csv` has the following composition:
 * First line
 
 ```
-<Team Name>;<Form>;<Suporters>;<Playing Style>
+TeamName;Form;Suporters;PlayingStyle
 ```
 
 * Following lines
  
 ```
-<Player Name>;<Position>;<Attack>;<Defence>;<Team>;<Nationality>;<Date of Birth>;<Full Name>
+PlayerName;Position;Attack;Defence;Team;Nationality;DateOfBirth;FullName
 (...) 
 ```
 
@@ -66,7 +66,7 @@ Arguments List:
 > java Engine ../resources/netherlands.csv ../resources/england.csv 50
 ```
 
-The output is a set of 10 games with final result and number of players sent off in that game.
+The output shows the main events of the game and at the end prints the final result and total of red cards for each team.
 
 
 ## Future work

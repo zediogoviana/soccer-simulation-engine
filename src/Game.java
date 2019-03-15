@@ -66,7 +66,7 @@ public class Game {
     }
 
 
-    public void faultEvent(){
+    public void faultEvent(int minute){
         double redCard = this.ref.personality *
                 Math.random() *
                 Variables.REFEREE_PERSONALITY_FACTOR;
@@ -74,10 +74,15 @@ public class Game {
         // If is likely to send off
         if(redCard > Variables.REFEREE_RED_CARD){
             // Randomly Pick Team
-            if(Math.random() > 0.5)
+            if(Math.random() > 0.5){
                 finalResult.addSuspension("home");
-            else
+                System.out.println(minute + "'' [RED CARD] " + this.homeTeam.name);
+            }
+
+            else {
                 finalResult.addSuspension("away");
+                System.out.println(minute + "'' [RED CARD] " + this.awayTeam.name);
+            }
         }
     }
 
@@ -95,12 +100,17 @@ public class Game {
         if(attack != null){
 
             if(!this.defendAttack(attack, def, minute)){
+
+                System.out.println(minute + "'' [GOAL] " + attack.name);
+
                 //Add goal to result
                 if(attack == this.awayTeam)
                     this.finalResult.addGoal("away");
                 else
                     this.finalResult.addGoal("home");
             }
+            else
+                System.out.println(minute + "'' [FAILED] " + attack.name);
         }
     }
 
@@ -111,14 +121,14 @@ public class Game {
         this.finalResult = new Result();
 
         //90 minutes Game
-        for(int minute=0; minute<90; minute++){
+        for(int minute=0; minute < 90; minute++){
 
             //What happens in this minute?
             double action = Math.random();
 
             // Fault
             if(action < Variables.FAULT_FACTOR){
-                this.faultEvent();
+                this.faultEvent(minute);
             }
 
             // Attack
@@ -127,6 +137,10 @@ public class Game {
             }
 
             // Otherwise nothing happens
+
+            if(minute == 45)
+                System.out.println("[BREAK]");
+
         }
 
         return this.finalResult;

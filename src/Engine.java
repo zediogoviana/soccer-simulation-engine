@@ -15,21 +15,20 @@ public class Engine {
                 "portuguese",
                 Integer.valueOf(args[2]));
 
-        for(int i=0; i< 10; i++) {
-            Game game = new Game(home, away, ref);
-            Result res = game.startSimulation();
 
-            //Show results
+        Game game = new Game(home, away, ref);
+        Result res = game.startSimulation();
 
-            System.out.println("######### GAME " + i + " #########");
-            System.out.println(home.name + ": " + res.goalsHomeTeam);
-            System.out.println(away.name + ": " + res.goalsAwayTeam);
+        //Show results
+        System.out.println("\n");
+        System.out.println(home.name + ": " + res.goalsHomeTeam);
+        System.out.println(away.name + ": " + res.goalsAwayTeam);
 
-            System.out.println("Red Cards " + home.name + ": " + res.redCardsHomeTeam);
-            System.out.println("Red Cards " + away.name + ": " + res.redCardsAwayTeam);
+        System.out.println("Red Cards " + home.name + ": " + res.redCardsHomeTeam);
+        System.out.println("Red Cards " + away.name + ": " + res.redCardsAwayTeam);
 
-            System.out.println("\n");
-        }
+
+
 
     }
 

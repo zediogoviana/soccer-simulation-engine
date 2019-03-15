@@ -1,7 +1,7 @@
 public class Variables {
 
     public static final double SCORE_FACTOR = 0.75;
-    public static final double ATTACK_FACTOR = 0.65;
+    public static final double ATTACK_FACTOR = 0.75;
     public static final double FAULT_FACTOR = 0.01;
     public static double LUCK_FACTOR = Math.random();
     public static final double AGE_EFFECT = 0.5;
