@@ -68,6 +68,7 @@ Arguments List:
 
 The output shows the main events of the game and at the end prints the final result and total of red cards for each team.
 
+![Example Output](outputExample.png)
 
 ## Future work
 
