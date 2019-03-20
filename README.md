@@ -50,9 +50,20 @@ TeamName;Form;Suporters;PlayingStyle
 * Following lines
  
 ```
-PlayerName;Position;Attack;Defence;Team;Nationality;DateOfBirth;FullName
+PlayerName;Position;Attack;Defence;Status;Nationality;DateOfBirth;FullName
 (...) 
 ```
+
+Where:
+* Position: 
+    * ```G```: goal-keeper
+    * ```D```: defender
+    * ```M```: midfielder
+    * ```A```: attacker
+* Status:
+    * ```T```: starting
+    * ```S```: substitute
+    * ```O```: out
 
 **Running** 
 
@@ -72,6 +83,7 @@ The output shows the main events of the game and at the end prints the final res
 
 ## Future work
 
-* Implement starting 11
+* Substitutions
+* More realistic simulation 
 * Injuries
 * Yellow cards and Red cards with accumulation

@@ -5,6 +5,7 @@ public class Team {
 
     public String name;
     public List<Player> players;
+    public List<Player> startingEleven;
     public int form;
     public int supporters;
     public int playingStyle;
@@ -16,6 +17,7 @@ public class Team {
             int playingStyle) {
         this.name = name;
         this.players = new ArrayList<>();
+        this.startingEleven = new ArrayList<>();
         this.form = form;
         this.supporters = supporters;
         this.playingStyle = playingStyle;
@@ -27,12 +29,18 @@ public class Team {
             String[] itemsArray = new String[player.size()];
             Player pl = new Player(player.toArray(itemsArray));
 
-            this.addPlayer(pl);
+            if(pl.status.equals("T"))
+                this.addTitularPlayer(pl);
+            else
+                this.addPlayer(pl);
         }
     }
 
+    private void addTitularPlayer(Player pl){
+        this.startingEleven.add(pl);
+    }
 
-    public void addPlayer(Player pl){
+    private void addPlayer(Player pl){
         this.players.add(pl);
     }
 
@@ -40,18 +48,18 @@ public class Team {
 
         float sumAge = 0;
 
-        for(Player pl: this.players){
+        for(Player pl: this.startingEleven){
             sumAge += pl.getAge();
         }
 
-        return (sumAge/this.players.size());
+        return (sumAge/11);
     }
 
     public float getAttack(){
         float sumAttack = 0;
         int count = 0;
 
-        for(Player pl: this.players){
+        for(Player pl: this.startingEleven){
             if (pl.position.equals("A")) {
                 sumAttack += pl.statAtt;
                 count++;
@@ -64,10 +72,10 @@ public class Team {
     private double getMeanAttackingValue() {
         float sumAtt = 0;
 
-        for(Player pl: this.players){
+        for(Player pl: this.startingEleven){
             sumAtt += pl.statAtt;
         }
-        return (sumAtt/this.players.size());
+        return (sumAtt/11);
 
     }
 
@@ -76,7 +84,7 @@ public class Team {
         float sumDefence = 0;
         int count = 0;
 
-        for(Player pl: this.players){
+        for(Player pl: this.startingEleven){
             if(pl.position.equals("D") || pl.position.equals("G")  ){
                 sumDefence += pl.statDef;
                 count++;
@@ -90,11 +98,11 @@ public class Team {
     public float getMeanValue(){
         float sumMed = 0;
 
-        for(Player pl: this.players){
+        for(Player pl: this.startingEleven){
             sumMed += pl.statMed;
         }
 
-        return (sumMed/this.players.size());
+        return (sumMed/11);
     }
 
     public float calculateAttack(int minute, int redCards){

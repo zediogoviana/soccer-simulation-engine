@@ -8,6 +8,7 @@ public class Player {
     public int statAtt;
     public int statDef;
     public int statMed;
+    public String status;
     public String nationality;
     private LocalDate birthDate;
     public String fullName;
@@ -18,6 +19,7 @@ public class Player {
         this.statAtt = Integer.valueOf(player[2]);
         this.statDef = Integer.valueOf(player[3]);
         this.statMed = (statAtt + statAtt) / 2;
+        this.status = player[4];
         this.nationality = player[5];
         this.birthDate = LocalDate.parse(player[6]);
         this.fullName = player[7];

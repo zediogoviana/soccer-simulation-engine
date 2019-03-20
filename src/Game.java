@@ -115,11 +115,29 @@ public class Game {
     }
 
 
+    private void printStarting11(Team t){
+
+        System.out.println("[" + t.name + "]");
+
+        for(Player pl: t.startingEleven){
+            System.out.println(pl.position + ": " + pl.name);
+        }
+
+        System.out.println("########\n");
+    }
+
+
     // Game Simulation
     public Result startSimulation(){
 
         this.finalResult = new Result();
 
+        //Starting 11
+        this.printStarting11(this.homeTeam);
+        this.printStarting11(this.awayTeam);
+
+
+        System.out.println("[GAME STARTED]");
         //90 minutes Game
         for(int minute=0; minute < 90; minute++){
 
